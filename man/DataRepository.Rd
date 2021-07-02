@@ -13,6 +13,8 @@ An object typically holding observed data
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
+\item{\code{name}}{The name of the object.}
+
 \item{\code{baseGrid}}{Returns the base column for the data repository (typically time column).}
 
 \item{\code{columns}}{Returns all columns (including baseGrid) defined in the data repository.}
@@ -27,6 +29,8 @@ where the name is the name of the metaData and the value is the meta data value.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
+\item \href{#method-addColumn}{\code{DataRepository$addColumn()}}
+\item \href{#method-new}{\code{DataRepository$new()}}
 \item \href{#method-print}{\code{DataRepository$print()}}
 }
 }
@@ -34,9 +38,45 @@ where the name is the name of the metaData and the value is the meta data value.
 \out{<details open ><summary>Inherited methods</summary>}
 \itemize{
 \item \out{<span class="pkg-link" data-pkg="ospsuite" data-topic="DotNetWrapper" data-id="finalize">}\href{../../ospsuite/html/DotNetWrapper.html#method-finalize}{\code{ospsuite::DotNetWrapper$finalize()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="ospsuite" data-topic="DotNetWrapper" data-id="initialize">}\href{../../ospsuite/html/DotNetWrapper.html#method-initialize}{\code{ospsuite::DotNetWrapper$initialize()}}\out{</span>}
 }
 \out{</details>}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-addColumn"></a>}}
+\if{latex}{\out{\hypertarget{method-addColumn}{}}}
+\subsection{Method \code{addColumn()}}{
+Adds a column to the data repository
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{DataRepository$addColumn(column)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{column}}{Column to add}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
+\subsection{Method \code{new()}}{
+Initialize a new instance of the class
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{DataRepository$new(ref = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{ref}}{Optional underlying DataRepository. If it is not provided, a new instance will be created}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A new \code{DataRepository} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}

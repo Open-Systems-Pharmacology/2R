@@ -2,19 +2,25 @@
 % Please edit documentation in R/utilities.R
 \name{ifNotNull}
 \alias{ifNotNull}
-\title{Mimic the ternary operator  \code{a ? x : y} behavior in other languages
-If \code{condition} is not null, returns \code{outputIfNotNull} otherwise \code{outputIfNull}}
+\title{ifnotnull}
 \usage{
 ifNotNull(condition, outputIfNotNull, outputIfNull = NULL)
 }
 \arguments{
-\item{condition}{The .NET object instances (single or list) to wrap}
+\item{outputIfNotNull}{argument 2}
 
-\item{outputIfNotNull}{The class definition that will be used to convert the parameter}
+\item{outputIfNull}{argument 3}
 
-\item{outputIfNull}{The class definition that will be used to convert the parameter}
+\item{inputToCheck}{argument 1}
+}
+\value{
+outputIfNotNull if inputToCheck is not null, outputIfNull otherwise
 }
 \description{
-Mimic the ternary operator  \code{a ? x : y} behavior in other languages
-If \code{condition} is not null, returns \code{outputIfNotNull} otherwise \code{outputIfNull}
+Check if inputToCheck is not null, if so output outputIfNotNull,
+otherwise, output outputIfNull
+}
+\details{
+Shortkey checking if argument 1 is not null,
+output the argument 2 if not null, or output argument 3 otherwise
 }

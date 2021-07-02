@@ -238,6 +238,19 @@ getDimensionTask <- function() {
   return(dimensionTask)
 }
 
+#' Returns the an instance of the dimension with the given name if found or NULL otherwise
+#'
+#' @param dimension Name of dimension that should be retrieved
+#'
+#' @examples
+#' dim <- getDimensionByName("Time")
+#' @export
+getDimensionByName <- function(name){
+  validateIsString(name)
+  dimensionTask <- getDimensionTask()
+  rClr::clrCall(dimensionTask, "DimensionByName", enc2utf8(name))
+}
+
 
 #' Loop through dimensions and build a list containing an enum of all units available for each dimension
 #' @return enum of all units for each dimension

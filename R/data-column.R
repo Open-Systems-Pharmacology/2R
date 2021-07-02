@@ -10,9 +10,9 @@ DataColumn <- R6::R6Class(
   inherit = DotNetWrapper,
   cloneable = FALSE,
   active = list(
-    #' @field values Returns the values defined in the column  (Read-Only)
+    #' @field values Returns the values defined in the column
     values = function(value) {
-      private$wrapReadOnlyProperty("ValuesAsArray", value)
+      private$wrapProperty("ValuesAsArray", value)
     },
     #' @field name Returns the name of the column  (Read-Only)
     name = function(value) {
@@ -23,14 +23,31 @@ DataColumn <- R6::R6Class(
       private$.unit <- private$wrapExtensionMethodCached(WITH_DIMENSION_EXTENSION, "BaseUnitName", "unit", private$.unit, value)
       return(private$.unit)
     },
-    #' @field displayUnit The unit in which the values should be displayed (Read-Only)
+    #' @field displayUnit The unit in which the values should be displayed
     displayUnit = function(value) {
-      private$wrapExtensionMethod(WITH_DISPLAY_UNIT_EXTENSION, "DisplayUnitName", "displayUnit", value)
+      if (missing(value)) {
+        return(private$wrapExtensionMethod(WITH_DISPLAY_UNIT_EXTENSION, "DisplayUnitName", "displayUnit", value))
+      }
+      dimension <- getDimensionByName(self$dimension)
+      # we use the ignore case parameter set  to true so that we do not have to worry about casing when set via scripts
+      unit <-  rClr::clrCall(dimension, "FindUnit", value, TRUE)
+      if(is.null(unit)){
+        stop(messages$errorUnitNotSupported(unit = value, dimension = self$dimension))
+      }
+      rClr::clrSet(self$ref, "DisplayUnit", unit)
     },
-    #' @field dimension The dimension of the values  (Read-Only)
+    #' @field dimension The dimension of the values
     dimension = function(value) {
-      private$.dimension <- private$wrapExtensionMethodCached(WITH_DIMENSION_EXTENSION, "DimensionName", "dimension", private$.dimension, value)
-      return(private$.dimension)
+      if (missing(value)) {
+        if (is.null(private$.dimension)) {
+          private$.dimension <- private$wrapExtensionMethodCached(WITH_DIMENSION_EXTENSION, "DimensionName", "dimension", private$.dimension, value)
+        }
+        return(private$.dimension)
+      }
+      # updating the dimension
+      rClr::clrSet(self$ref, "Dimension", getDimensionByName(value))
+      private$.dimension <- NULL
+      private$.unit <- NULL
     }
   ),
   public = list(

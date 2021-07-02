@@ -4,7 +4,12 @@
 \alias{setQuantityValuesByPath}
 \title{Set the values of parameters in the simulation by path}
 \usage{
-setQuantityValuesByPath(quantityPaths, values, simulation)
+setQuantityValuesByPath(
+  quantityPaths,
+  values,
+  simulation,
+  stopIfNotFound = TRUE
+)
 }
 \arguments{
 \item{quantityPaths}{A single or a list of absolute quantity path}
@@ -14,6 +19,9 @@ of numeric values, if the value of more than one quantity should be changed. Mus
 length as 'quantityPaths'}
 
 \item{simulation}{Simulation uses to retrieve quantity instances from given paths.}
+
+\item{stopIfNotFound}{Boolean. If \code{TRUE} (default) and no qyantuty exists for the given path,
+an error is thrown. If \code{FALSE}, a warning is shown to the user}
 }
 \description{
 Set the values of parameters in the simulation by path

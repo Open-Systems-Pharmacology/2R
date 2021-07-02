@@ -1,6 +1,12 @@
 context("DataRepository")
+
 obsDataFile <- getTestDataFilePath("obs_data.pkml")
 obsData <- loadDataRepositoryFromPKML(obsDataFile)
+
+test_that("it can set the name of the data repository", {
+  obsData$name <- "toto"
+  expect_equal(obsData$name, "toto")
+})
 
 test_that("it can return the base grid", {
   expect_true(!is.null(obsData$baseGrid))

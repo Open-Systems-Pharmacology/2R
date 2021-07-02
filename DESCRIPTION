@@ -42,6 +42,7 @@ Collate:
     'create-population.R'
     'data-column.R'
     'data-repository.R'
+    'data-set.R'
     'dot-net-wrapper.R'
     'entity.R'
     'enum.R'

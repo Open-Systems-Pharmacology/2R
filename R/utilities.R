@@ -30,12 +30,17 @@ toObjectType <- function(netObject, class) {
 }
 
 
-#' Mimic the ternary operator  \code{a ? x : y} behavior in other languages
-#' If \code{condition} is not null, returns \code{outputIfNotNull} otherwise \code{outputIfNull}
+#' Shortkey checking if argument 1 is not null,
+#' output the argument 2 if not null, or output argument 3 otherwise
 #'
-#' @param condition The .NET object instances (single or list) to wrap
-#' @param outputIfNotNull The class definition that will be used to convert the parameter
-#' @param outputIfNull The class definition that will be used to convert the parameter
+#' @title ifnotnull
+#' @param inputToCheck argument 1
+#' @param outputIfNotNull argument 2
+#' @param outputIfNull argument 3
+#' @return outputIfNotNull if inputToCheck is not null, outputIfNull otherwise
+#' @description
+#' Check if inputToCheck is not null, if so output outputIfNotNull,
+#' otherwise, output outputIfNull
 ifNotNull <- function(condition, outputIfNotNull, outputIfNull = NULL) {
   if (!is.null(condition)) {
     outputIfNotNull

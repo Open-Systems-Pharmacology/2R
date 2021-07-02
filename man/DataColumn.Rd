@@ -13,7 +13,7 @@ One column defined in a \code{DataRepository}
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
-\item{\code{values}}{Returns the values defined in the column  (Read-Only)}
+\item{\code{values}}{Returns the values defined in the column}
 
 \item{\code{name}}{Returns the name of the column  (Read-Only)}
 

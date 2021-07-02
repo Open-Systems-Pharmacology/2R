@@ -9,7 +9,7 @@ ObjectBase <- R6::R6Class(
   cloneable = FALSE,
   inherit = DotNetWrapper,
   active = list(
-    #' @field name The name of the object
+    #' @field name The name of the object. (read-only)
     name = function(value) {
       private$wrapReadOnlyProperty("Name", value)
     },
