@@ -1,0 +1,20 @@
+on: push
+
+jobs:
+  docker:
+    runs-on: windows-2019
+    steps:
+    -
+      name: Checkout
+      uses: actions/checkout@v2
+    -
+      name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v1
+    - 
+      name: Build image
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        push: false
+        tags: user/app:latest
